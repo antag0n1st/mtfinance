@@ -1,0 +1,159 @@
+#top-menu { 
+    padding-top: 22px;
+    width: 100%;
+    overflow: hidden;
+}
+
+#menu-wraper {
+    width: 100%;
+    overflow: hidden        
+}
+
+.active { font-weight: bold}
+
+
+.menu-list { 
+    width: 210px;
+    padding: 5px;
+    padding-top: 11px;
+    margin-left: 135px;
+    font-family: Cambria, serif;
+    font-size: 25px;
+    text-decoration: none;
+    text-align: center;
+    color: #4c4c4c;
+    float: left;
+    overflow: hidden;
+}
+
+.menu-list:hover { font-weight: bold;
+}
+.menu-active:hover { font-weight: bold;}
+
+
+.submenu { height: 32px;
+           margin-right: 120px;
+           margin-left: 120px;
+           margin-top: 15px;
+
+}
+
+
+
+.submenu-list {font-family: Cambria, serif;
+               color: #4c4c4c;
+               font-size: 14pt;
+               padding-left: 30px;
+               text-decoration: none;;
+               text-align: center;
+               float: left;
+               width: 100px;
+
+}
+
+.submenu-list .active { 
+    font-family: Cambria, serif;
+    color: #4c4c4c;
+    font-size: 14pt;
+    margin-left: 83px;
+    text-decoration: none;
+    text-align: center;
+    float: left;
+    width: 100px;
+    background-color: #d6daff;
+
+
+}
+
+
+.table-wraper {    
+    padding-left: 120px;
+    padding-top: 20px;
+
+}
+
+.table { font-family: Cambria, serif; 
+         border-collapse: collapse; 
+         width: 1050px;
+         text-align: center;
+         border: gray 1px solid ;
+}
+.th { border-bottom: gray 1px solid; }
+.td { padding-bottom: 7px;
+      padding-top: 7px;
+      border-bottom: gray 1px solid;
+}
+
+#title-line { 
+    background-color: #d6daff;
+    color: #4c4c4c;
+    font-size: 14pt
+
+}  
+
+.colid { border-right: gray 1px solid; }
+
+.link {
+    text-decoration: none;
+
+}
+
+.uplata {
+    width: auto;
+    height: 30px;
+}
+.uplata-hover:hover { content: url('../images/uplata_hover.png');
+                      width: auto;
+                      height: 30px;
+}
+
+.izmeni { 
+    width: 20px;
+    height: 20px;
+    padding-left: 20px;
+    margin-bottom: 4px;
+}
+.izmeni-hover:hover { content: url('../images/izmeni_hover.png');
+                      width: 20px;
+                      height: 20px;
+}
+
+.add { margin-top: 35px;
+       width: 45px;
+       height: 46px;
+}
+
+.add-hover:hover { content: url('../images/add_hover.png');}
+
+.textbox {
+    border-color: #9d9b9b;
+    border-width: 1.7px;
+    width: 200px;
+    height: 25px;
+}
+
+.inside_textbox {
+    font-family: Cambria, serif;
+    font-size: 13pt;
+    text-align: left;
+    color: black;
+    padding-left: 15px;
+}
+
+.textbox_position { 
+    margin-top: 32px;
+    margin-left: 200px;
+}
+
+.dodadi {
+    width: auto;
+    height: 30px;
+}
+.dodadi-hover:hover { content: url('../images/dodadi_hover.png');
+                      width: auto;
+                      height: 30px;
+}
+
+.not-paid{
+    background-color: red;
+}

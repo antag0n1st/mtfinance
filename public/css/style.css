@@ -1,0 +1,18 @@
+body {
+    background-color: lightsteelblue;
+}
+
+.background { 
+    background: white;
+    height: 100%;
+    width: 1287px;             
+    margin: 15px auto 0 auto;    
+    box-shadow: 2px 3px 5px #9d9b9b;  
+}
+
+.container {  
+    overflow: hidden;   
+    height: 74px;
+    border-bottom: 1px solid lightsteelblue;
+    background-color: #d6daff;
+}
