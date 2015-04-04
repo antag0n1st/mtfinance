@@ -25,5 +25,14 @@ class Group extends Model {
         $query .= " WHERE is_deleted = 0 AND is_active = 1 ";
         return Group::find_by_sql($query);
     }
+    
+    public static function find_all_individual(){
+        
+        $query = " SELECT * FROM groups ";
+        $query .= " WHERE is_deleted = 0 AND is_active = 1 ";
+        $query .= " AND is_individual = 1";
+        
+        return Group::find_by_sql($query);
+    }
 
 }

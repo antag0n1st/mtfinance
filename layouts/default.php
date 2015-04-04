@@ -16,18 +16,17 @@
             </a>            
         </div>
 
-        <div class="background"> 
+        <?php if (Membership::instance()->user->user_level > 0) : ?>       
+            <div style="position: absolute;right: 0;top: 10px; width: 200px;">
+                <span> Hi, <?php echo Membership::instance()->user->full_name; ?> </span>
 
-            <?php if (Membership::instance()->user->user_level > 0) : ?>                
-                <p class="loggedin-name"> Hi, <?php echo Membership::instance()->user->full_name; ?> </p>
-
-                <form id="sign-out-form" name="form" method="post" action="<?php echo URL::abs('membership/logout'); ?>">
+                <form style="display: inline;" id="sign-out-form" name="form" method="post" action="<?php echo URL::abs('membership/logout'); ?>">
                     <a href="#" class="signout" onclick="document.getElementById('sign-out-form').submit();" > Sign out </a>
                 </form>
-            <?php else: ?>
+            </div>
+        <?php endif; ?>
 
-            <?php endif; ?>
-
+        <div class="background"> 
 
             <?php if (Membership::instance()->user->user_level < 4): ?>
 

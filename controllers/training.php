@@ -23,7 +23,7 @@ class TrainingController extends Controller {
         Load::model('member');
         Load::model('group');
         Load::assign('group_id', $group_id);
-        
+
         $group = Group::find_by_id($group_id);
         Load::assign('group', $group);
 
@@ -40,12 +40,29 @@ class TrainingController extends Controller {
         $_active_page_submenu_ = $group_id;
     }
 
-    public function individual($group_id = 0) {
-        $this->men($group_id);
+    public function individual($group_id = -1) {
+
+        Load::model('group');
+        $ind = Group::find_all_individual();
+
+        if (count($ind)) {
+            Load::assign('individual_groups', $ind);
+           
+            if ($group_id == -1) {
+                $group_id = $ind[0]->id;                
+            }
+          
+            $this->men($group_id);
+        }
 
         global $view, $_active_page_, $_active_page_submenu_;
         $_active_page_ = "individual";
         $_active_page_submenu_ = $group_id;
+
+
+        if (!count($ind)) {
+            $view = "no_groups";
+        }
     }
 
     public function pay() {
@@ -62,10 +79,8 @@ class TrainingController extends Controller {
         $payment->created_at = TimeHelper::DateTimeAdjusted();
 
         $payment->save();
-        
+
         URL::redirect_to_refferer();
     }
-    
-   
 
 }

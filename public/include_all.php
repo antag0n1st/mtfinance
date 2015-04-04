@@ -4,4 +4,5 @@
     Head::instance()->favicon('favicon.png');
     Head::instance()->load_js('jquery-2.1.3.min');
     
+    Head::instance()->load_js('kibo');
     Head::instance()->load_js('main','1.2');

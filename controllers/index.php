@@ -8,6 +8,8 @@ class IndexController extends Controller {
         
         if (Membership::instance()->user->user_level <= 0) {
             $view = 'login';
+        } else {
+            URL::redirect('training/men');
         }
     }
 

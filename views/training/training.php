@@ -21,7 +21,10 @@
         </thead>
         <tbody>
             <?php foreach ($members as $key => $member): /* @var $member Member */ ?>
-                <tr class="<?php echo $member->is_paid ? "" : "not-paid"; ?>">
+                <tr class="<?php 
+                echo $member->is_paid ? "" : "not-paid"; 
+                echo $member->is_billed == 0 && $member->is_billed != null ? " hide" : ""; 
+                ?>">
                     <td class="td">  <?php echo $member->id; ?> </td>
                     <td class="td">  <?php echo $member->name; ?> </td>
                     <td class="td">  <?php echo $member->contact; ?> </td>
@@ -51,9 +54,10 @@
 </div>
 
 <form id="make-payment" style="display: none;" name="form" method="post" action="<?php echo URL::abs('training/pay'); ?>">
-    <div id="payment_background" style="width: 100%;height: 100%;background-color: #ffffff;position: fixed;left: 0;top: 0;">
+    <div id="payment_background" style="width: 100%;height: 100%;background-color: rgba(1,1,1,0.7);position: fixed;left: 0;top: 0;">
         <div id="payment_container" style="position: fixed;left: 35%;top:30%; background-color: #99ff99; border: 1px solid #666666;padding: 20px;">
-
+            
+            <input style="position: absolute; right: 10px;" type="button" value="close" onclick="hide_payment();" />
             <input type="hidden" name="member_id" id="member_id" />
 
             <input type="radio" name="payment" id="payment_1" value="1500" checked="checked" /> <label for="payment_1">1500 </label> <br /><br />
@@ -76,7 +80,7 @@
         });
 
         $("#payment_background").click(function () {
-            $("#make-payment").hide();
+            hide_payment();
         });
 
         $("#payment_container").click(function (event) {
@@ -104,6 +108,10 @@
         });
 
     });
+
+    function hide_payment() {
+        $("#make-payment").hide();
+    }
 
     function show_payment(member_id, date) {
         $("#member_id").val(member_id);

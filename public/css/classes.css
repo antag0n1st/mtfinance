@@ -9,11 +9,10 @@
     overflow: hidden        
 }
 
-.active { font-weight: bold}
+.active { font-weight: bold;}
 
 
-.menu-list { 
-    width: 210px;
+.menu-list {     
     padding: 5px;
     padding-top: 11px;
     margin-left: 135px;
@@ -26,8 +25,7 @@
     overflow: hidden;
 }
 
-.menu-list:hover { font-weight: bold;
-}
+.menu-list:hover { color:black;}
 .menu-active:hover { font-weight: bold;}
 
 
@@ -47,8 +45,6 @@
                text-decoration: none;;
                text-align: center;
                float: left;
-               width: 100px;
-
 }
 
 .submenu-list .active { 
@@ -156,4 +152,11 @@
 
 .not-paid{
     background-color: red;
+}
+
+.hide{
+    display: none;
+}
+.show{
+
 }
