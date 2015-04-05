@@ -59,7 +59,6 @@ class TrainingController extends Controller {
         $_active_page_ = "individual";
         $_active_page_submenu_ = $group_id;
 
-
         if (!count($ind)) {
             $view = "no_groups";
         }
