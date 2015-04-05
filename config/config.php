@@ -83,6 +83,8 @@ $plugins = array(
 // the scound place is the conrollers folder under the root folder.
 $plugin_controllers = array(); // DON'T EDIT THIS LINE
 
+define('MEMBERSHIP_COOKIE_DURATION', 60*60*6); // sec * min * hours
+
 /**
  * ======================================================
  *               Active menu items/links

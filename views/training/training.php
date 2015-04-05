@@ -16,6 +16,7 @@
                 <th class="th"> Адреса </th>
                 <th class="th"> Активен </th>
                 <th class="th"> Ден.Доцнење </th>
+                <th class="th hide"> Детали </th>
                 <th class="th"> Плати </th>
             </tr>
         </thead>
@@ -31,6 +32,7 @@
                     <td class="td">  <?php echo $member->address; ?> </td>
                     <td class="td">  <?php echo $member->is_active ? "Да" : "Не"; ?> </td>
                     <td class="td">  <?php echo $member->is_paid ? "-" : $member->due_days; ?> </td>
+                    <td class="td hide"> <a href="<?php echo URL::abs('members/details/'.$member->id); ?>"> Детали </a> </td>
                     <td class="td">  
                         <a href="#" class="link">
                             <img onclick="show_payment('<?php echo $member->id; ?>', '<?php echo $member->last_payment; ?>');"  
@@ -55,7 +57,7 @@
 
 <form id="make-payment" style="display: none;" name="form" method="post" action="<?php echo URL::abs('training/pay'); ?>">
     <div id="payment_background" style="width: 100%;height: 100%;background-color: rgba(1,1,1,0.7);position: fixed;left: 0;top: 0;">
-        <div id="payment_container" style="position: fixed;left: 35%;top:30%; background-color: #99ff99; border: 1px solid #666666;padding: 20px;">
+        <div id="payment_container" style="position: fixed;left: 35%;top:30%; background-color: white; border: 1px solid black; padding: 20px;">
             
             <input style="position: absolute; right: 10px;" type="button" value="close" onclick="hide_payment();" />
             <input type="hidden" name="member_id" id="member_id" />
@@ -65,8 +67,10 @@
             <input type="radio" name="payment" id="payment_3" value="0" /> <label for="payment_3">0 </label> <br /><br />
             <input type="radio" name="payment" id="payment_4" value="" /> <input type="text" id="custom_payment" /> <br /><br />
             <label>Платено од датум:</label><input type="text" id="start-date-datepicker" name="date" /> <br /><br />
-            <label>Сметка</label><input name="is_billed" id="is_billed" checked="checked" type="checkbox" /> <br /><br />
-            <input type="submit" value="Плати" />
+            <div class="hide">
+                 <label>Сметка</label><input name="is_billed" id="is_billed" checked="checked" type="checkbox" /> <br /><br />
+            </div>
+           <input type="submit" value="Плати" />
 
         </div>
     </div>

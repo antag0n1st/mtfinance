@@ -82,5 +82,13 @@ class TrainingController extends Controller {
 
         URL::redirect_to_refferer();
     }
+    
+    public function delete_payment($id=0){
+        Load::model('payment');
+        $payment = Payment::find_by_id($id);
+        /* @var $payment Payment */
+        $payment->delete();
+        URL::redirect_to_refferer();
+    }
 
 }

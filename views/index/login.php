@@ -9,7 +9,7 @@
     </div>
     <div class="login_button" > 
         <a href="#" onclick="document.getElementById('login-form').submit();"> 
-            <img id="hover-img" src="images/login_button.png" width="40" height="40" 
+            <img id="hover-img" src="<?php echo URL::image('login_button.png'); ?>" width="40" height="40" 
                  alt="Login button" title="Sign in" />
         </a>
     </div>

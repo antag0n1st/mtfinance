@@ -51,7 +51,7 @@ $(function () {
             remove_cookie();
         } else {
             $('.hide').removeClass('hide').addClass('show');
-            
+
 
             timer_id = setTimeout(function () {
                 $('.show').removeClass('show').addClass('hide');
@@ -67,9 +67,9 @@ $(function () {
     });
 
     var cookie = get_cookie('show');
-   
+
     if (cookie == 'show' && typeof cookie != 'undefined') {
-       
+
         $('.hide').removeClass('hide').addClass('show');
         is_visible = true;
 
@@ -81,6 +81,10 @@ $(function () {
 
         set_cookie();
     }
+
+    $('.confirm').click(function () {
+        return window.confirm("Дали си сигурен?");
+    });
 
 });
 

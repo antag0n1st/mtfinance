@@ -4,7 +4,7 @@ class Member extends Model {
 
     public static $table_name = 'members';
     public static $id_name = 'id';
-    public static $db_fields = array('id', 'group_id', 'name', 'contact', 'address', 'embg', 'gender', 'is_active', 'created_at', 'is_deleted','is_billed');
+    public static $db_fields = array('id', 'group_id', 'name', 'contact', 'address', 'embg', 'gender', 'is_active', 'created_at', 'is_deleted');
     public $id;
     public $group_id;
     public $name;
@@ -21,7 +21,7 @@ class Member extends Model {
     public $is_billed;
 
     public static function find_all() {
-        $query = " SELECT * FROM " . static::$table_name . " WHERE is_deleted = 0 ";
+        $query = " SELECT * FROM " . static::$table_name . " WHERE is_deleted = 0 ORDER BY is_active DESC ";
         return static::find_by_sql($query);
     }
 
@@ -41,7 +41,9 @@ class Member extends Model {
         
         $query .= " WHERE is_deleted = 0 ";
         $query .= " AND is_active = 1 ";
-        $query .= " AND group_id = '".Model::db()->prep($group_id)."' ";        
+        $query .= " AND group_id = '".Model::db()->prep($group_id)."' ";
+        
+        $query .= " ORDER BY is_billed , is_paid ";
         
         return static::find_by_sql($query);
     }

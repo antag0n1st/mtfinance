@@ -50,5 +50,54 @@ class MembersController extends Controller {
         $member->save();
         URL::redirect_to_refferer();
     }
+    
+    public function details($id=0){
+        Load::model('member');
+        Load::model('payment');
+        Load::model('group');
+        
+        $groups = Group::find_all_active();
+
+        $gr = array();
+
+        foreach ($groups as $key => $group) { /* @var $group Group */
+            $v = $group->name . " | " . $group->time . " | ";
+            $v .= $group->is_individual ? "Индивидуална" : "Регуларна Група";
+            $gr[$group->id] = $v;
+        }
+
+        Load::assign('groups', $gr);
+        
+        $member = Member::find_by_id($id);
+        Load::assign('member', $member);
+        
+        $payments = Payment::find_all_by_member($member->id);
+        Load::assign('payments', $payments);
+        
+    }
+    
+    public function change_status($id = 0){
+        
+        Load::model('member');
+        
+        /* @var $member Member */
+        $member = Member::find_by_id($id);
+        $member->is_active = $member->is_active ? 0 : 1 ;
+        $member->save();
+        
+        URL::redirect_to_refferer();
+    }
+    
+    public function change_group($id=0,$group_id = 0){
+        
+        Load::model('member');
+        
+        /* @var $member Member */
+        $member = Member::find_by_id($id);
+        $member->group_id = $group_id;
+        $member->save();
+        
+        URL::redirect_to_refferer();
+    }
 
 }

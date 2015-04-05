@@ -10,6 +10,7 @@
             <th class="th"> Контакт </th>
             <th class="th"> Адреса </th>
             <th class="th"> Активен </th>
+            <th class="th hide"> Детали </th>
             <th class="th"> Избриши </th>
         </tr>
     </thead>
@@ -21,10 +22,10 @@
                 <td class="td">  <?php echo $member->contact; ?> </td>
                 <td class="td">  <?php echo $member->address; ?> </td>
                 <td class="td">  <?php echo $member->is_active ? "Да" : "Не"; ?> </td>
+                <td class="td hide"> <a href="<?php echo URL::abs('members/details/' . $member->id); ?>"> Детали </a> </td>
                 <td class="td">  
-                    <a href="<?php echo URL::abs('members/delete/' . $member->id); ?>" class="link">
-                        <img  class="izmeni izmeni-hover" src="images/izmeni.png"  
-                              alt="Измени" title="измени" />
+                    <a class="confirm" href="<?php echo URL::abs('members/delete/' . $member->id); ?>">
+                        Избриши
                     </a> 
                 </td>
             </tr>

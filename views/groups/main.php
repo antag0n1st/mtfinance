@@ -25,9 +25,8 @@
                 <td class="td">  <?php echo $group->size; ?> </td>
                 <td class="td">  
                     <?php if($group->id > 7): ?>
-                    <a href="<?php echo URL::abs('groups/delete/'.$group->id); ?>" class="link">
-                        <img  class="izmeni izmeni-hover" src="images/izmeni.png"  
-                              alt="Измени" title="измени" />
+                    <a href="<?php echo URL::abs('groups/delete/'.$group->id); ?>" class="confirm">
+                        Избриши
                     </a>
                     <?php endif; ?>
                 </td>
