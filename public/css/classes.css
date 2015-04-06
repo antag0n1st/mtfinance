@@ -1,3 +1,40 @@
+.login-wrapper{
+   width: 250px;
+   padding-top: 7px;
+   }
+
+.text-left {
+   font-size: 14pt;
+    color: black;
+    
+}
+
+.text-right {
+   font-size: 14pt;
+    color: black;
+  
+    }
+
+.login{
+    padding:0;       
+    border-color: #9d9b9b;
+    border-width: 1.7px;
+    width: 200px;
+    height: 25px;
+}
+
+
+.login_button {
+  
+    width: 100px;
+    padding-top: 20px; 
+    }  
+
+#hover-img:hover { content: url('../images/signin_hover.png');
+                   width: 120px;
+                   height: 35px;
+}
+
 #top-menu { 
     padding-top: 22px;
     width: 100%;
