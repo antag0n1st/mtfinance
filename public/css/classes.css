@@ -197,3 +197,36 @@
 .show{
 
 }
+
+.details1 { 
+    padding-left: 50px;
+    padding-top: 30px;
+}
+
+.collum1 { width: 154px;
+           display: block;
+          float: left;
+           line-height: 30px;
+           text-align: right;
+           padding-right: 10px;
+
+}
+.collum2 { width: 217px;
+           display: block;
+           float: left;
+           line-height: 30px;
+           font-family: Cambria, serif;
+}
+
+.text { font-family: Cambria, serif;
+        color: black;
+        font-size: 18px;
+}
+
+.details2 {
+    overflow: hidden;
+    width: 100%;
+    padding-top: 50px;
+}
+
+

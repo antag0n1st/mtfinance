@@ -1,10 +1,21 @@
- <form id="add-group" name="form" method="post" action="<?php echo URL::abs('groups/add'); ?>">
-     
-     <label>name: </label> <?php HTML::textfield('name'); ?> <br /><br />
-     <label>size: </label> <?php HTML::textfield('size'); ?> <br /><br />
-     <label>time: </label> <?php HTML::textfield('time'); ?> <br /><br />
-     <label>is individual: </label> <?php HTML::checkbox('is_individual'); ?> <br /><br />
-     <label>is active: </label> <?php HTML::checkbox('is_active', "", "yes", "", array(), false, true); ?> <br /><br />
-     <label>comment: </label> <?php HTML::textarea('comment'); ?> <br /><br />
-     <input type="submit" value="save" /> <br /> <br />
- </form>
+<div style="height: 300px; ">
+<form id="add-group" name="form" method="post" action="<?php echo URL::abs('groups/add'); ?>">
+
+    <div class="collum1 text">
+        name: <br/>
+        size: <br/>
+        time: <br/>
+        is individual: <br/>
+        is active: <br/>
+    </div>
+    <div class="collum2">
+    <?php HTML::textfield('name', ''); ?> 
+    <?php HTML::textfield('size'); ?> 
+    <?php HTML::textfield('time'); ?> <br/>
+    <?php HTML::checkbox('is_individual'); ?> <br />
+    <?php HTML::checkbox('is_active', "", "yes", "", array(), false, true); ?> <br />
+    <?php HTML::textarea('comment'); ?> <br />
+    <input type="submit" value="Save" style="cursor: pointer;"/> <br /> <br />
+    </div>
+</form>
+    </div>

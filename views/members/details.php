@@ -1,18 +1,29 @@
 <?php if (isset($member) and $member): /* @var $member Member */ ?>
 
-    <div>
+<div style="height: 300px;">
         <form id="edit-member" name="form" method="post" action="<?php echo URL::abs('members/edit/'.$member->id); ?>">
-            <p><label>Име:</label> <?php HTML::textfield('name', '', '', array(), false, $member->name); ?> </p>
-            <p><label>Коментар:</label> <?php HTML::textfield('comment', '', '', array(), false, $member->comment); ?> </p>
-            <p><label>Контакт:</label> <?php HTML::textfield('contact', '', '', array(), false, $member->contact); ?> </p>
-            <p><label>Адреса:</label> <?php HTML::textfield('address', '', '', array(), false, $member->address); ?> </p>
-            <p><label>Ембг:</label> <?php HTML::textfield('embg', '', '', array(), false, $member->embg); ?> </p>
-            <p><label>Член од:</label> <b><?php echo TimeHelper::to_date($member->created_at, 'd M Y'); ?></b> </p>
+            <div class="collum1 text">
+            Име: <br/>
+            Коментар: <br/>
+            Адреса: <br/>
+            ЕМБГ: <br/>
+            Член од: <br/>
+            Активен: <br/>
+            Група: <br/>
+            </div>
+            <div class="collum2">
+            <?php HTML::textfield('name', '', '', array(), false, $member->name); ?> 
+            <?php HTML::textfield('comment', '', '', array(), false, $member->comment); ?> 
+            <?php HTML::textfield('contact', '', '', array(), false, $member->contact); ?> 
+            <?php HTML::textfield('address', '', '', array(), false, $member->address); ?> 
+            <?php HTML::textfield('embg', '', '', array(), false, $member->embg); ?> <br/> 
+            <?php echo TimeHelper::to_date($member->created_at, 'd M Y'); ?> 
 
-            <p><label>Активен:</label> <input onchange="change_status('<?php echo $member->id; ?>');" type="checkbox" <?php echo $member->is_active ? 'checked="checked"' : ''; ?> /> </p>
-            <label>group: </label><?php HTML::select($groups, 'group_id', $member->group_id); ?> <br /><br />
+            <input onchange="change_status('<?php echo $member->id; ?>');" type="checkbox" <?php echo $member->is_active ? 'checked="checked"' : ''; ?> />
+            <?php HTML::select($groups, 'group_id', $member->group_id); ?> <br /><br />
             
-            <input type="submit" value="Зачувај" />
+            <input type="submit" value="Зачувај" /> <br/> <br/>
+            </div>
         </form>
     </div>
 
