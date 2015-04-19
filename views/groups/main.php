@@ -21,7 +21,13 @@
                 <td class="td">  <?php echo $group->name; ?> </td>
                 <td class="td">  <?php echo $group->time; ?> </td>
                 <td class="td">  <?php echo $group->is_individual ? "Да" : "Не"; ?>  </td>
-                <td class="td">  <?php echo $group->is_active ? "Да" : "Не"; ?> </td>
+                <td class="td"> 
+                    <?php if($group->is_active): ?>
+                        <a href="<?php echo URL::abs('groups/deactivate/'.$group->id); ?>">Да</a>
+                    <?php else: ?>
+                        <a href="<?php echo URL::abs('groups/activate/'.$group->id); ?>">Не</a>
+                    <?php endif; ?>                    
+                </td>
                 <td class="td">  <?php echo $group->size; ?> </td>
                 <td class="td">  
                     <?php if($group->id > 7): ?>

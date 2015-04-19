@@ -12,6 +12,7 @@
             <tr id="title-line">
                 <th class="th"> Бр. </th>
                 <th class="th"> Име </th>
+                <th class="th"> Коментар </th>
                 <th class="th"> Контакт </th>
                 <th class="th"> Адреса </th>
                 <th class="th"> Активен </th>
@@ -23,19 +24,20 @@
         <tbody>
             <?php foreach ($members as $key => $member): /* @var $member Member */ ?>
                 <tr class="<?php 
-                echo $member->is_paid ? "" : "not-paid"; 
+                echo $member->due_days < 0 ? "" : "not-paid"; 
                 echo $member->is_billed == 0 && $member->is_billed != null ? " hide" : ""; 
                 ?>">
                     <td class="td">  <?php echo $member->id; ?> </td>
                     <td class="td">  <?php echo $member->name; ?> </td>
+                    <td class="td">  <?php echo $member->comment; ?> </td>
                     <td class="td">  <?php echo $member->contact; ?> </td>
                     <td class="td">  <?php echo $member->address; ?> </td>
                     <td class="td">  <?php echo $member->is_active ? "Да" : "Не"; ?> </td>
-                    <td class="td">  <?php echo $member->is_paid ? "-" : $member->due_days; ?> </td>
+                    <td class="td">  <?php echo abs($member->due_days); ?> </td>
                     <td class="td hide"> <a href="<?php echo URL::abs('members/details/'.$member->id); ?>"> Детали </a> </td>
                     <td class="td">  
                         <a href="#" class="link">
-                            <img onclick="show_payment('<?php echo $member->id; ?>', '<?php echo $member->last_payment; ?>');"  
+                            <img onclick="show_payment('<?php echo $member->id; ?>', '<?php echo $member->last_payment; ?>' , '<?php echo $member->name; ?>');"  
                                  class="uplata uplata-hover" 
                                  src="<?php echo URL::image('uplata.png'); ?>"  
                                  alt="Измени" title="измени" />
@@ -45,6 +47,10 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+<br />
+<div class="hide">
+    Број на членови: <strong><?php echo count($members); ?></strong>
+</div>
 
 <?php endif; ?>
 
@@ -68,9 +74,9 @@
             <input type="radio" name="payment" id="payment_4" value="" /> <input type="text" id="custom_payment" /> <br /><br />
             <label>Платено од датум:</label><input type="text" id="start-date-datepicker" name="date" /> <br /><br />
             <div class="hide">
-                 <label>Сметка</label><input name="is_billed" id="is_billed" checked="checked" type="checkbox" /> <br /><br />
+                 <label for="is_billed">Сметка</label><input name="is_billed" id="is_billed" checked="checked" type="checkbox" /> <br /><br />
             </div>
-           <input type="submit" value="Плати" />
+           <label id="member_name"></label> <input type="submit" value="Плати" />
 
         </div>
     </div>
@@ -117,11 +123,11 @@
         $("#make-payment").hide();
     }
 
-    function show_payment(member_id, date) {
+    function show_payment(member_id, date , name) {
         $("#member_id").val(member_id);
         var last_date_format = $("#start-date-datepicker").datepicker('option', 'dateFormat');
         $("#start-date-datepicker").datepicker('option', 'dateFormat', 'yy-mm-dd');
-
+        $("#member_name").html(name);
         $("#start-date-datepicker").datepicker('setDate', date.length ? date : new Date());
         $("#start-date-datepicker").datepicker('option', 'dateFormat', last_date_format);
         $("#make-payment").show();

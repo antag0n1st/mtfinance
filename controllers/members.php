@@ -36,9 +36,12 @@ class MembersController extends Controller {
             $member->is_active = $this->get_post('is_active') ? 1 : 0;
             $member->created_at = TimeHelper::DateTimeAdjusted();
             $member->address = $this->get_post('address');
+            $member->comment = $this->get_post('comment');
 
             $member->save();
-            URL::redirect('members');
+            $group_name = $this->get_post('is_male') ? 'men' : 'women';
+            $group_name = $member->group_id > 8 ? 'individual' : $group_name;
+            URL::redirect('training/'.$group_name.'/'.$member->group_id);
         }
     }
 
@@ -72,8 +75,24 @@ class MembersController extends Controller {
         Load::assign('member', $member);
         
         $payments = Payment::find_all_by_member($member->id);
+      
         Load::assign('payments', $payments);
         
+    }
+    
+    public function edit($id = 0){
+        Load::model('member');
+        
+        /* @var $member Member */
+        $member = Member::find_by_id($id);
+        $member->name = $this->get_post('name');
+        $member->contact = $this->get_post('contact');
+        $member->embg = $this->get_post('embg');
+        $member->comment = $this->get_post('comment');
+        $member->address = $this->get_post('address');
+        $member->save();
+        
+        URL::redirect_to_refferer();
     }
     
     public function change_status($id = 0){

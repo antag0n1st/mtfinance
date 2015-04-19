@@ -71,7 +71,7 @@ class TrainingController extends Controller {
         $payment = new Payment();
         $payment->member_id = $this->get_post('member_id');
         $payment->payment_sum = $this->get_post('payment');
-        $payment->user_id = Membership::instance()->user->id;
+        $payment->user_id = Membership::instance()->user->user_id;
         $payment->is_billed = $this->get_post('is_billed') ? 1 : 0;
         $payment->paid_at = date("Y-m-d", strtotime($this->get_post('date')));
         $payment->paid_due = date("Y-m-d", strtotime("+1 month", strtotime($this->get_post('date'))));

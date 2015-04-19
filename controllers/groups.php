@@ -42,6 +42,26 @@ class GroupsController extends Controller {
         URL::redirect_to_refferer();
     }
     
+    public function activate($id = 0){
+        Load::model('group');
+        $group = Group::find_by_id($id);
+        /* @var $group Group */
+        $group->is_active = 1;
+        
+        $group->save();
+        URL::redirect_to_refferer();
+    }
+    
+    public function deactivate($id = 0 ){
+        Load::model('group');
+        $group = Group::find_by_id($id);
+        /* @var $group Group */
+        $group->is_active = 0;
+        
+        $group->save();
+        URL::redirect_to_refferer();
+    }
+    
     public function comment(){
         global $layout;
         $layout = null;

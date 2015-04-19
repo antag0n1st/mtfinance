@@ -4,7 +4,7 @@ class Member extends Model {
 
     public static $table_name = 'members';
     public static $id_name = 'id';
-    public static $db_fields = array('id', 'group_id', 'name', 'contact', 'address', 'embg', 'gender', 'is_active', 'created_at', 'is_deleted');
+    public static $db_fields = array('id', 'group_id', 'name', 'contact', 'address', 'embg', 'gender', 'is_active', 'created_at', 'is_deleted','comment');
     public $id;
     public $group_id;
     public $name;
@@ -19,6 +19,7 @@ class Member extends Model {
     public $due_days;
     public $last_payment;
     public $is_billed;
+    public $comment;
 
     public static function find_all() {
         $query = " SELECT * FROM " . static::$table_name . " WHERE is_deleted = 0 ORDER BY is_active DESC ";
